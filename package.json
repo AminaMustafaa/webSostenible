@@ -1,0 +1,27 @@
+{
+  "name": "websostenible",
+  "version": "1.0.0",
+  "description": "a sustenible web",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminaMustafaa/MySustenibleWeb.git"
+  },
+  "keywords": [
+    "sustenible.ods"
+  ],
+  "author": "Amina M.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AminaMustafaa/MySustenibleWeb/issues"
+  },
+  "homepage": "https://github.com/AminaMustafaa/MySustenibleWeb#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "server": "^1.0.42"
+  }
+}

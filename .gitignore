@@ -1,0 +1,5 @@
+node_modules/
+roughStuff/
+.env
+.vscode/
+.DS_Store
