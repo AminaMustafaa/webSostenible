@@ -1,0 +1,14 @@
+:root {
+    --main-color:   #2D6A2D;
+    --hover-color:  #3B8D3B;
+    --body-color:   #F4F9F0;
+    --box-color:    #FFFFFF;
+    --top-bar:      #1A3D1A;
+    --accent:       #639922;
+    --accent-light: #EAF3DE;
+    --accent-mid:   #97C459;
+    --accent-muted: #9FE1CB;
+    --text-on-dark: #FFFFFF;
+    --text-dark:    #1A3D1A;
+    --border-light: #C0DD97;
+}

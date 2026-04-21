@@ -1,0 +1,124 @@
+#my-footer .socials a i {
+    font-size: 17px;
+    color: white;
+}
+/* FOOTER */
+
+#my-footer {
+    background-color: var(--top-bar);
+    color: var(--text-on-dark);
+    padding: 40px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* LEFT COLUMN — logo + socials*/
+
+#my-footer > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#my-footer .logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+#my-footer .socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+#my-footer .socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#my-footer .socials a:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+#my-footer .socials img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+/* RIGHT COLUMN — contact*/
+
+#my-footer > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#my-footer h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent-mid);
+    margin-bottom: 6px;
+}
+
+#my-footer > div:last-child > img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    margin-bottom: -4px;
+}
+
+#my-footer p {
+    font-size: 13px;
+    color: var(--accent-muted);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+#my-footer a {
+    font-size: 13px;
+    color: var(--accent-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#my-footer a:hover {
+    color: var(--text-on-dark);
+    text-decoration: underline;
+}
+
+/*  BOTTOM BAR */
+
+#my-footer::after {
+    content: none;
+}
+
+/* MAIN CONTENT CENTER HELPER*/
+
+.main-center-content {
+    /* Apply this class to your <main> too */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The footer itself spans full width but inner content is padded */
+#my-footer {
+    width: 100%;
+    max-width: 100%;
+}
