@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../static/js/explorar.js" defer></script>
+</head>
+<body>
+    <main class="main-center-content">
+        <h1>Explorar Items</h1>
+        <section>
+        
+                <label for="">Buscar items:</label>
+                <input type="search" id="site-search" placeholder="Ropa,libros..">
+                
+
+                <label for="">Filtrar por categoria</label>
+                <select name="categoria" id="categoria">
+                    <option value="">--Elije una categoria--</option>
+                    <option value="ropa">ropa</option>
+                    <option value="libros">libro</option>
+                    <option value="herramientas">herramientas</option>
+                    <option value="hogar">hogar</option>
+                </select>
+
+                <label for="">Filtrar por condicion</label>
+                <select name="condicion" id="condicion">
+                    <option value="">--Elije items por condicion--</option>
+                    <option value="como nuevo">como nuevo</option>
+                    <option value="bueno">bueno</option>
+                    <option value="usado">usado</option>
+                </select>
+
+
+            <div id="items-container"></div>
+            
+        </section>
+    </main>
+</body>
+</html>

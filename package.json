@@ -2,10 +2,10 @@
   "name": "websostenible",
   "version": "1.0.0",
   "description": "a sustenible web",
-  "main": "server.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,12 @@
   },
   "homepage": "https://github.com/AminaMustafaa/MySustenibleWeb#readme",
   "dependencies": {
+    "body-parser": "^2.2.2",
     "express": "^5.2.1",
+    "node": "^24.15.0",
     "server": "^1.0.42"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
