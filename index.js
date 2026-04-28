@@ -1,11 +1,13 @@
 import express from "express";
 import fs, { read } from "fs"; //treballar amb arxius
 import bodyParser from "body-parser"; //Ho afegim per entendre que estem rebent un json des de la petició post.
+import cors from "cors";
 
 //application object
 const PORT = 3000;
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 //to read JSOn file data
 const readData=()=>{
