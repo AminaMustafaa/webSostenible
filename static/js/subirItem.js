@@ -86,7 +86,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
         if(response.ok) {
             // 5 — success: show message and redirect
             alert("Artículo subido correctamente!");
-            window.location.href = "../pages/explorar.hrml";
+            window.location.href = "../pages/explorar.html";
         }
     } catch(error) {
         console.log(error);

@@ -63,12 +63,13 @@ app.post("/items/:id", (req,res) => {
 });
 
 // ENDPOINT for PUT with id -> to UPDATE a specific item
-app.put("/items:id", (req,res) => {
+//app.put("/items/:id", (req,res) => {
+app.put("/items", (req,res) => {
     const data = readData();
     const body = req.body;
     const id = parseInt(req.params.id);
     const itemIndex = data.items.findIndex((i) => i.id === id);
-    data.item[itemIndex] = {
+    data.items[itemIndex] = {
         ...data.item[itemIndex],
         ...body,
     };
