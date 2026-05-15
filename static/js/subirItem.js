@@ -1,3 +1,6 @@
+//-----------------------------------------------------------
+//----------------- CRUD : POST -----------------------------
+//-----------------------------------------------------------
 // ----------------- FROM VALIDATION CHECKS -----------------
 document.getElementById("title").addEventListener("blur", function(event) {
     if(!this.checkValidity()){
@@ -56,7 +59,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
     if(titulo === "" || category === "" || condition === "" || 
        description === "" || barrio === "" || ownerName === "" || correo === "") {
         alert("Por favor rellena todos los campos.");
-        return; // ← stops the function here if invalid
+        return;  // stops the function here if invalid
     }
 
     // 3 — build newItem object

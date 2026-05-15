@@ -1,9 +1,12 @@
+//-----------------------------------------------------------
+//----------------- CRUD : GET (all) ------------------------ 
+//-----------------------------------------------------------
 //API'S GET Endpoint created in request.http file
 const url = "http://localhost:3000/items";
 //empty array to store all items
 let allItems = []; 
 
-// 1 — fetch all items on load
+// 1. fetch all items on load
 async function getItems(){
     
     try{
@@ -28,7 +31,7 @@ async function getItems(){
     
 };
 
-// 2 — render items to the DOM
+// 2. render items to the DOM
 function renderItems(items){
     const mainItems = document.getElementById("items-container");
     mainItems.innerHTML = "";
@@ -38,7 +41,7 @@ function renderItems(items){
     });
 }
 
-// 3 — build one card
+// 3. build one card
 function creatCard(item){
     //creating main div
     const itemDiv = document.createElement("div");
@@ -58,7 +61,7 @@ function creatCard(item){
     return itemDiv;
 }
 
-// 4 — filter function
+// 4. filter function
 function filterItems(){
     const searchBar = document.getElementById("site-search").value.toLowerCase();
     const categoryInput = document.getElementById("category").value;

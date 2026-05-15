@@ -5,32 +5,28 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const url = `http://localhost:3000/items/${id}`;
-let oneItem = [];
-
-// 2. fetch just that one item
-async function getItem(id) {
+/*
+// 2. fetch the item to delet it later on
+async function getItem(){
     try{
-
         const response = await fetch(url);
         if(!response.ok){
             throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
 
-        const data = await response.json();
-        if(data){
-            oneItem = data;
-            renderDetail(oneItem);
+        const item = await response.json();
+        if(item) {
+            renderItem(item);
         } else {
             console.log("Item not found");
         }
 
-    } catch(error) {
+    } catch(error){
         console.log(error);
     }
 }
-
-// 3. render full detail
-function renderDetail(item) {
+// 3. show item info on the page
+function renderItem(item) {
     const mainItem = document.getElementById("item-detail");
     mainItem.innerHTML = `
         <img src="${item.image_url}" alt="${item.title}">
@@ -47,10 +43,27 @@ function renderDetail(item) {
             Nombre Propietario: ${item.owner_name} <br>
             Correo: ${item.owner_email} <br>
         </p> 
-        <button onclick="window.location.href='modificar.html?id=${item.id}'"> Modificar</button>
-        <button id="delete-btn">Eliminar</button>
     `;
-//<button onclick="window.location.href='deleteItem.html?id=${item.id}'">Eliminar</button>
-}
 
-getItem(id);
+}
+    */
+// 4. to delete the item
+document.getElementById("delete-btn").addEventListener("click", async () => {
+    const confirm = window.confirm("Seguro que quieres eliminar este artículo?");
+    if (!confirm) return;
+
+    try {
+        const response = await fetch(url, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            alert("Articulo eliminado correctamente!");
+            window.location.href = "../pages/explorar.html";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+getItem();

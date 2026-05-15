@@ -7,3 +7,11 @@ GET http://localhost:3000/items/3
 ###
 
 POST http://localhost:3000/items
+
+###
+
+PUT http://localhost:3000/books/${id}
+
+###
+
+DELETE http://localhost:3000/books/${id}

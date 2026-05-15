@@ -50,7 +50,7 @@ app.get("/items/:id",(req,res) => {
 });
 
 // ENDPOINT for POST -> to CREATE a new item
-app.post("/items/:id", (req,res) => {
+app.post("/items", (req,res) => {
     const data = readData();
     const body = req.body;
     const newItem = {
@@ -63,14 +63,13 @@ app.post("/items/:id", (req,res) => {
 });
 
 // ENDPOINT for PUT with id -> to UPDATE a specific item
-//app.put("/items/:id", (req,res) => {
-app.put("/items", (req,res) => {
+app.put("/items/:id", (req,res) => {
     const data = readData();
     const body = req.body;
     const id = parseInt(req.params.id);
     const itemIndex = data.items.findIndex((i) => i.id === id);
     data.items[itemIndex] = {
-        ...data.item[itemIndex],
+        ...data.items[itemIndex],
         ...body,
     };
     writeData(data);
@@ -88,6 +87,7 @@ app.delete("/items/:id", (req,res) => {
 
 });
 
+// ENDPOINT for POST (requests)-> to move an item in the requested items
 app.post("/requests", (req,res) => {
     const data = readData();
     const body = req.body;
