@@ -1,1 +1,97 @@
 @import "./colorPalette.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+.main-center-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    
+}
+.main-center-content h1,h2 {
+    color: var(--text-dark);
+}
+.dark-color-text {
+    color: var(--text-dark);
+}
+.main-center-content p {
+   
+}
+
+/*------------------------*/
+/*ODS and impacto page css*/
+/*------------------------*/
+
+/* Container layout */
+.ods-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card Wrapper & Perspective */
+.ods-card {
+  background-color: transparent;
+  width: 250px; 
+  height: 250px;
+  perspective: 1000px; /* Needed for 3D effect */
+}
+
+/* Inner container that actually rotates */
+.ods-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Trigger the flip on hover */
+.ods-card:hover .ods-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Common styling for Front and Back */
+.ods-card-front, .ods-card-back {
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Hide the back when flipped */
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Front Side */
+.ods-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Back Side */
+.ods-card-back {
+  background-color: #333; /* Fallback dark background */
+  color: white;
+  transform: rotateY(180deg); /* Pre-flip the back text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
