@@ -1,12 +1,11 @@
+<?php require_once '../partial/head.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/styles.css ">
-    <title>Document</title>
-</head>
+
 <body>
+    <?php require_once '../partial/header.php'; ?>
+
     <main id="ods-page" class="main-center-content">
         <h1>ODS y El impacto</h1>
 
@@ -74,8 +73,6 @@
 
         </section>
 
-        </section>
-
         <section class="ods-conclusion">
             <h2>El Efecto Dominó de la Sostenibilidad</h2>
             <br><p>
@@ -89,8 +86,9 @@
             </p>
         </section>
 
-</main>
-        
+    </main>
 
+    <?php require_once '../partial/footer.php'; ?>
 </body>
 </html>
+

@@ -1,15 +1,14 @@
+<?php require_once '../partial/head.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="../static/js/explorar.js" defer></script>
-</head>
+
 <body>
+
+    <?php require_once '../partial/header.php'; ?>
+
     <main class="main-center-content">
         <h1>Explorar Items</h1>
-        <a href="../index.html">Pagina principal</a>
+        <a href="/index.php">Pagina principal</a>
         <br><br>
         <section>
         
@@ -35,12 +34,17 @@
                 </select>
                 <br><br>
 
-                <button onclick="window.location.href='/pages/subirItem.html'"> Añadir Item </button>
+                <button onclick="window.location.href='/views/users/subirItem.php'"> Añadir Item </button>
                 <br><br><br>
-            <div id="items-container"></div>
-            
+
+        <div id="items-container"></div>
             
         </section>
     </main>
+
+    <?php require_once '../partial/footer.php'; ?>
+
+    <script src="/static/js/explorar.js" ></script>
 </body>
 </html>
+

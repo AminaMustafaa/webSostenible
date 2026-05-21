@@ -1,12 +1,11 @@
+<?php require_once '../partial/head.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../static/js/subirItem.js" defer></script>
-    <title>Document</title>
-</head>
+
 <body>
+    <?php require_once '../partial/header.php'; ?>
+
     <main class="main-center-content">
         <h1>Subir Items</h1>
         <section>
@@ -59,5 +58,10 @@
 
         </section>
     </main>
+
+    <?php require_once '../partial/footer.php'; ?>
+
+    <script src="/static/js/subirItem.js"></script>
 </body>
 </html>
+

@@ -31,6 +31,7 @@ async function getItem(id) {
 
 // 3. render full detail
 function renderDetail(item) {
+
     const mainItem = document.getElementById("item-detail");
     mainItem.innerHTML = `
         <img src="${item.image_url}" alt="${item.title}">
@@ -47,10 +48,29 @@ function renderDetail(item) {
             Nombre Propietario: ${item.owner_name} <br>
             Correo: ${item.owner_email} <br>
         </p> 
-        <button onclick="window.location.href='modificar.html?id=${item.id}'"> Modificar</button>
+        <button onclick="window.location.href='/views/users/modificar.php?id=${item.id}'"> Modificar</button>
         <button id="delete-btn">Eliminar</button>
     `;
-//<button onclick="window.location.href='deleteItem.html?id=${item.id}'">Eliminar</button>
+
 }
+
+// 4. to delete the item
+document.getElementById("delete-btn").addEventListener("click", async () => {
+    const confirm = window.confirm("Seguro que quieres eliminar este artículo?");
+    if (!confirm) return;
+
+    try {
+        const response = await fetch(url, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            alert("Articulo eliminado correctamente!");
+            window.location.href = "/views/users/explorar.php";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 getItem(id);

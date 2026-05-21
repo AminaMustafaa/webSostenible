@@ -1,12 +1,11 @@
+<?php require_once '../partial/head.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../static/js/modificarItem.js" defer></script>  <!-- ← fix -->
-    <title>Modificar Item</title>
-</head>
+
 <body>
+    <?php require_once '../partial/header.php'; ?>
+
     <main class="main-center-content">
         <h1>Modificar Items</h1>
         <section>
@@ -41,5 +40,11 @@
             <button id="modify-btn">Guardar cambios</button>  
         </section>
     </main>
+
+    <?php require_once '../partial/footer.php'; ?>
+
+    <script src="/static/js/modificarItem.js"></script> 
+
 </body>
 </html>
+
