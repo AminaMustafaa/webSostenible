@@ -4,7 +4,8 @@
 // 1. read the id from the URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const url = `http://localhost:3000/items/${id}`;
+//const url = `http://localhost:3000/items/${id}`;
+const url = `${API_URL}/items/${id}`;
 
 
 // 2. fetch the item to modify it later on
@@ -68,7 +69,7 @@ document.getElementById("modify-btn").addEventListener("click", async () => {
 
         if (response.ok) {
             alert("Articulo modificado correctamente!");
-            window.location.href = `../pages/detalle.html?id=${id}`;
+            window.location.href = `../pages/detalle.php?id=${id}`;
         }
     } catch (error) {
         console.log(error);

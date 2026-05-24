@@ -2,7 +2,10 @@
 //----------------- CRUD : GET (all) ------------------------ 
 //-----------------------------------------------------------
 //API'S GET Endpoint created in request.http file
-const url = "http://localhost:3000/items";
+//const url = "http://localhost:3000/items";
+const url = `${API_URL}/items`;
+
+
 //empty array to store all items
 let allItems = []; 
 
@@ -26,7 +29,7 @@ async function getItems(){
         }
 
     } catch(error){
-        console.log("Error in getting thedata from Json file", error);
+        console.log("Error in getting the data from Json file", error);
     }
     
 };
@@ -56,7 +59,7 @@ function creatCard(item){
     `;
     //event listener to show the details of a specific item
     itemDiv.addEventListener("click", () => {
-        window.location.href = `../pages/detalle.html?id=${item.id}`;
+        window.location.href = `/views/users/detalle.php?id=${item.id}`;
     });
     return itemDiv;
 }

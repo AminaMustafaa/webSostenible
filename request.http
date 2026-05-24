@@ -1,17 +1,17 @@
-GET http://localhost:3000/items
+GET http://localhost:3001/items
 
 ###
 
-GET http://localhost:3000/items/3
+GET http://localhost:3001/items/3
 
 ###
 
-POST http://localhost:3000/items
+POST http://localhost:3001/items
 
 ###
 
-PUT http://localhost:3000/books/${id}
+PUT http://localhost:3001/books/2
 
 ###
 
-DELETE http://localhost:3000/books/${id}
+DELETE http://localhost:3001/books/2

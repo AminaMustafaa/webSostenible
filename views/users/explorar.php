@@ -1,6 +1,6 @@
-<?php require_once '../partial/head.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php require_once '../partial/head.php'; ?>
 
 <body>
 
@@ -44,7 +44,7 @@
 
     <?php require_once '../partial/footer.php'; ?>
 
-    <script src="/static/js/explorar.js" ></script>
+    <script src="/static/js/explorar.js" defer ></script>
 </body>
 </html>
 

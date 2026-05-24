@@ -79,7 +79,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
 
     // 4 — fetch POST 
     try {
-        const response = await fetch("http://localhost:3000/items", {
+        const response = await fetch(`${API_URL}/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newItem)

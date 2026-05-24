@@ -4,7 +4,8 @@
 // 1. read the id from the URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const url = `http://localhost:3000/items/${id}`;
+//const url = `http://localhost:3000/items/${id}`;
+const url = `${API_URL}/items/${id}`;
 let oneItem = [];
 
 // 2. fetch just that one item
@@ -52,25 +53,27 @@ function renderDetail(item) {
         <button id="delete-btn">Eliminar</button>
     `;
 
+    // 4. to delete the item
+    document.getElementById("delete-btn").addEventListener("click", async () => {
+        const confirm = window.confirm("Seguro que quieres eliminar este artículo?");
+        if (!confirm) return;
+
+        try {
+            const response = await fetch(url, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                alert("Articulo eliminado correctamente!");
+                window.location.href = "/views/users/explorar.php";
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
 }
 
-// 4. to delete the item
-document.getElementById("delete-btn").addEventListener("click", async () => {
-    const confirm = window.confirm("Seguro que quieres eliminar este artículo?");
-    if (!confirm) return;
 
-    try {
-        const response = await fetch(url, {
-            method: "DELETE"
-        });
-
-        if (response.ok) {
-            alert("Articulo eliminado correctamente!");
-            window.location.href = "/views/users/explorar.php";
-        }
-    } catch (error) {
-        console.log(error);
-    }
-});
 
 getItem(id);

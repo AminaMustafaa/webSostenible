@@ -1,9 +1,8 @@
-<?php require_once '../partial/head.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
+<?php require_once '../partial/head.php'; ?>
 <body>
+    
     <?php require_once '../partial/header.php'; ?>
 
     <main class="main-center-content">

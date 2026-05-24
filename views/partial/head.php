@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/css/colorPalette.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/config.js" defer></script>
     <script src="/static/js/script.js" defer></script>
     <title>GreenLoop</title>
 </head>
