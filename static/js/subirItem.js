@@ -52,29 +52,27 @@ document.getElementById("post-item").addEventListener("click", async () => {
     const condition = document.getElementById("condition").value;
     const disponibilidad = document.getElementById("available").value;
     const barrio = document.getElementById("address").value;
-    const ownerName = document.getElementById("name").value;
-    const correo = document.getElementById("email").value;
+  
 
     // 2 — validate before sending (stop if anything is empty)
     if(titulo === "" || category === "" || condition === "" || 
-       description === "" || barrio === "" || ownerName === "" || correo === "") {
+       description === "" || barrio === "" ) {
         alert("Por favor rellena todos los campos.");
-        return;  // stops the function here if invalid
+        return; 
     }
 
     // 3 — build newItem object
-    const newItem = {
-        title: titulo,
-        image_url: image,
-        category: category,
-        description: description,
-        condition: condition,
-        available: disponibilidad === "true", // converts string to boolean
+     const newItem = {
+        title:         titulo,
+        image_url:     image,
+        category:      category,
+        description:   description,
+        condition:     condition,
+        available:     disponible === "true",
         neighbourhood: barrio,
-        owner_name: ownerName,
-        owner_email: correo,
-        times_lent: 0,              // always 0 for a new item
-        date_posted: new Date().toISOString().split("T")[0]  // today
+        times_lent:    0,
+        date_posted:   new Date().toISOString().split("T")[0]
+        // owner_name and owner_email are filled from the server-side (from the JWT)
     };
 
     // 4 — fetch POST 
@@ -86,13 +84,16 @@ document.getElementById("post-item").addEventListener("click", async () => {
             
         });
 
-        if(response.ok) {
-            // 5 — success: show message and redirect
-            alert("Artículo subido correctamente!");
-            window.location.href = "../pages/explorar.html";
+        const data = await response.json();
+        if (response.ok) {
+            alert("¡Artículo subido correctamente!");
+            window.location.href = "/views/users/explorar.php";
+        } else {
+            alert(data.error || "Error al subir el artículo");
         }
     } catch(error) {
         console.log(error);
+        alert("Error de conexión");
     }
     
 

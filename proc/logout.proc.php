@@ -1,6 +1,7 @@
 <?php
-setcookie("token", "", time() - 3600, "/");
+//to clear the JWT cookie
+setcookie("token", "", time() - 3600, "/", "", false, true);
 
-header("Location: /views/users/login.php");
+header("Location: /index.php");
 exit;
 ?>

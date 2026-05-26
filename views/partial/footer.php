@@ -2,7 +2,7 @@
 <footer id="my-footer" class="main-center-content">
         <div>
             <div class="logo">
-                <img src="/assets/images/logoWhiteTrans.png" alt="logo">
+                <a href="/index.php"><img src="/assets/images/logoWhiteTrans.png" alt="logo"> </a>
             </div>
             <div class="socials">
                 <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>

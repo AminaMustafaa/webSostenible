@@ -28,3 +28,18 @@ function validarToken(){
     return $payload64;
 
 }
+
+function requireLogin() {
+    $user = validarToken();
+    if (!$user) {
+        header("Location: /views/users/login.php");
+        exit;
+    }
+    return $user;
+}
+
+function isAdmin() {
+    $user = validarToken();
+    return $user && $user['role'] === 'admin';
+}
+?>

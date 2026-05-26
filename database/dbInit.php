@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../includes/dbOpenConn.php';
 
+
+//main items table
 $db->exec("CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -15,15 +17,6 @@ $db->exec("CREATE TABLE IF NOT EXISTS items (
     image_url TEXT,
     date_posted DATE DEFAULT CURRENT_DATE,
     times_lent INTEGER DEFAULT 0
-)");
-
-$db->exec("CREATE TABLE IF NOT EXISTS requests (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    status TEXT DEFAULT 'pending',
-    date DATE DEFAULT CURRENT_DATE,
-    item_id INTEGER,
-    requester_name TEXT,
-    requester_email TEXT
 )");
 
 $db->exec("
@@ -42,4 +35,55 @@ INSERT OR IGNORE INTO items (title, description, category, condition, neighbourh
 ('dff', 'a pendant by pendoraaAAAAAAAAAAAAAAAA', 'ropa', 'como nuevo', 'fff', 'ffff', 'ffff@gamil.com', 1, 'https://es.pandora.net/dw/image/v2/BFCR_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw80fde86d/productimages/main_rect_center/793983C01_RGB.jpg?q=70&sfrm=png&bgcolor=F7F7F7&sw=810', 0)
 ");
 
+
+//table for requested items
+$db->exec("CREATE TABLE IF NOT EXISTS requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    status TEXT DEFAULT 'pending',
+    date DATE DEFAULT CURRENT_DATE,
+    item_id INTEGER,
+    requester_name TEXT,
+    requester_email TEXT
+)");
+
+
+// users table — includes email so it links to items.owner_email
+$db->exec("CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'client',
+    CONSTRAINT chk_role CHECK (role IN('client','admin'))
+)");
+
+// Admin user
+$admin_pass   = password_hash('Admin123', PASSWORD_DEFAULT);
+$marc_puig    = password_hash('Marc123', PASSWORD_DEFAULT);
+$jordi_mas    = password_hash('Jordi123', PASSWORD_DEFAULT);
+$rosa_vila    = password_hash('Rosa123', PASSWORD_DEFAULT);
+$amina        = password_hash('Amina123', PASSWORD_DEFAULT);
+$laura        = password_hash('Laura123', PASSWORD_DEFAULT);
+$pere         = password_hash('Pere123', PASSWORD_DEFAULT);
+$lucas        = password_hash('Lucas123', PASSWORD_DEFAULT);
+$elena        = password_hash('Elena123', PASSWORD_DEFAULT);
+$marc_vila    = password_hash('Marc123', PASSWORD_DEFAULT);
+$sara         = password_hash('Sara123', PASSWORD_DEFAULT);
+
+$db->exec("
+INSERT OR IGNORE INTO users(name, email, password, role) VALUES
+('admin',       'admin@greenloop.com',      '$admin_pass',  'admin'),
+('Marc Puig',   'marc.puig@email.com',      '$marc_puig',   'client'),
+('Jordi Mas',   'jordi.mas@email.com',      '$jordi_mas',   'client'),
+('Rosa Vila',   'rosa.vila@email.com',      '$rosa_vila',   'client'),
+('Amina',       'amina@email.com',          '$amina',       'client'),
+('Laura Ferrer','laura.ferrer@email.com',   '$laura',       'client'),
+('Pere Soler',  'pere.soler@email.com',     '$pere',        'client'),
+('Lucas Sanz',  'lucas.sanz@email.com',     '$lucas',       'client'),
+('Elena Vidal', 'elena.vidal@email.com',    '$elena',       'client'),
+('Marc Vila',   'marc.vila@email.com',      '$marc_vila',   'client'),
+('Sara Gomez',  'sara.g@email.com',         '$sara',        'client')
+");
+
+$db->close();
 ?>

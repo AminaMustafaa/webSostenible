@@ -1,28 +1,31 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/authentication.php';
+$user = requireLogin();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <?php require_once '../partial/head.php'; ?>
 <body>
-    
     <?php require_once '../partial/header.php'; ?>
 
     <main class="main-center-content">
-        <h1>Modificar Items</h1>
+        <h1>Modificar Artículo</h1>
         <section>
-            Titulo: <input type="text" id="title" required minlength="2" maxlength="50"><br>
+            Título: <input type="text" id="title" required minlength="2" maxlength="50"><br>
             <span id="errorTitle" style="color:red"></span><br>
-            Imatge: <input type="text" id="image"><br>
-            Categoria:
+            Imagen (URL): <input type="text" id="image"><br>
+            Categoría:
             <select id="category" required>
-                <option value="">-- Elige categoria --</option>
+                <option value="">-- Elige categoría --</option>
                 <option value="ropa">Ropa</option>
                 <option value="libros">Libros</option>
                 <option value="herramientas">Herramientas</option>
                 <option value="hogar">Hogar</option>
             </select><br>
-            Descripcion: <textarea id="description" required minlength="20" maxlength="300"></textarea><br>
-            Condicion:
+            Descripción: <textarea id="description" required minlength="20" maxlength="300"></textarea><br>
+            Condición:
             <select id="condition" required>
-                <option value="">-- Elige condicion --</option>
+                <option value="">-- Elige condición --</option>
                 <option value="como nuevo">Como nuevo</option>
                 <option value="bueno">Bueno</option>
                 <option value="usado">Usado</option>
@@ -42,8 +45,6 @@
 
     <?php require_once '../partial/footer.php'; ?>
 
-    <script src="/static/js/modificarItem.js"></script> 
-
+    <script src="/static/js/modificarItem.js"></script>
 </body>
 </html>
-

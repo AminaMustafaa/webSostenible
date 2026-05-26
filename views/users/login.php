@@ -16,7 +16,9 @@
                 <label for="pass">Contraseña</label>
                 <input type="password" id="pass" required>
 
-                <input class="btn" type="submit" value="Entrar">
+                <input class="btn" type="submit" value="Entrar"><br> <br>
+
+                <p>No tienes cuenta? <a href="/views/users/registrar.php">Registrate ya</a></p>
             </form>
         </div>
     </main>
@@ -38,7 +40,8 @@
             .then(r => r.json())
             .then(data => {
                 if (data.token) {
-                    window.location.href = "/views/users/gestionarItems.php";
+                    //window.location.href = "/views/users/gestionarItems.php";
+                    window.location.href = "/views/users/misArticulos.php";
                 } else {
                     const err = document.getElementById("error-msg");
                     err.style.display = "block";

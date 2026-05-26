@@ -3,15 +3,18 @@
 //-----------------------------------------------------------
 //API'S GET Endpoint created in request.http file
 //const url = "http://localhost:3000/items";
-const url = `${API_URL}/items`;
+//const url = `${API_URL}/items`;
+//const url = "http://localhost:3002/items";
 
-
+const url = "/controllers/itemController.php";
 //empty array to store all items
 let allItems = []; 
 
 // 1. fetch all items on load
 async function getItems(){
-    
+
+    console.log("Fetching from:", url);
+
     try{
 
         const response = await fetch(url);
@@ -38,6 +41,11 @@ async function getItems(){
 function renderItems(items){
     const mainItems = document.getElementById("items-container");
     mainItems.innerHTML = "";
+
+    if (!items.length) {
+        mainItems.innerHTML = "<p>No se encontraron artículos.</p>";
+        return;
+    }
     items.forEach((item) => {
         const singleItem = creatCard(item);
         mainItems.appendChild(singleItem);
@@ -52,7 +60,8 @@ function creatCard(item){
     itemDiv.innerHTML = `
         <img src="${item.image_url}" alt="${item.title}">
         <h3> Titulo: ${item.title} </h3>
-        <p> Categoria: ${item.category} <br>
+        <p> 
+            Categoria: ${item.category} <br>
             Condicion:  ${item.condition} <br>
             Disponibilidad: ${item.available ? "Disponible" : "No disponible"} <br>
         </p> 

@@ -20,6 +20,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+/*
 //to read JSOn file data
 const readData=()=>{
     try {
@@ -52,7 +53,7 @@ const writeData=(data)=>{
 //-------------------------------------------------
 // ------- API ENDPOINTS USING JSON FILE ----------
 //-------------------------------------------------
-/*
+
 
 // ENDPOINT for GET -> to get all the items
 app.get("/items", (req,res) => {
@@ -123,13 +124,13 @@ app.post("/requests", (req,res) => {
     res.json({ message: "Item requested successfully."})
 
 });
+
 */
-
-
 
 //----------------------------------------------------------------
 // ------- API ENDPOINTS USING LOCALLY CREATED DATABASE ----------
 //----------------------------------------------------------------
+
 
 // GET all items
 app.get("/items", (req,res) => {
@@ -150,7 +151,7 @@ app.post("/items", (req,res) => {
     const stmt = db.prepare(`
         INSERT INTO items(title,description,category,neighbourhood,owner_name,
         owner_email,available,image_url,times_lent,date_posted)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
     const result = stmt.run(
         b.title,b.description,b.category, b.condition, b.neighbourhood,
         b.owner_name, b.owner_email,b.available ? 1:0, b.image_url,
@@ -180,6 +181,7 @@ app.delete("/items/:id", (req, res) => {
     db.prepare("DELETE FROM items WHERE id = ?").run(req.params.id);
     res.json({ message: "Item delete successfully." });
 });
+
 
 //port
 app.listen(PORT, ()=> {

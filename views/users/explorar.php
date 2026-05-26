@@ -1,5 +1,9 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/authentication.php';
+$currentUser = validarToken();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <?php require_once '../partial/head.php'; ?>
 
 <body>
@@ -7,34 +11,35 @@
     <?php require_once '../partial/header.php'; ?>
 
     <main class="main-center-content">
-        <h1>Explorar Items</h1>
-        <a href="/index.php">Pagina principal</a>
-        <br><br>
+        <h1>Explorar Artículos</h1>
         <section>
         
-                <label for="">Buscar items:</label>
-                <input type="search" id="site-search" placeholder="Ropa,libros..">
-                
+                <label for="site-search">Buscar artículos:</label>
+                <input type="search" id="site-search" placeholder="Ropa, libros...">
 
-                <label for="">Filtrar por categoria</label>
+                <label for="category">Filtrar por categoría</label>
                 <select name="category" id="category">
-                    <option value="">--Elije una categoria--</option>
-                    <option value="ropa">ropa</option>
-                    <option value="libros">libro</option>
-                    <option value="herramientas">herramientas</option>
-                    <option value="hogar">hogar</option>
+                    <option value="">--Elige una categoría--</option>
+                    <option value="ropa">Ropa</option>
+                    <option value="libros">Libros</option>
+                    <option value="herramientas">Herramientas</option>
+                    <option value="hogar">Hogar</option>
                 </select>
 
-                <label for="">Filtrar por condicion</label>
+                <label for="condition">Filtrar por condición</label>
                 <select name="condition" id="condition">
-                    <option value="">--Elije items por condicion--</option>
-                    <option value="como nuevo">como nuevo</option>
-                    <option value="bueno">bueno</option>
-                    <option value="usado">usado</option>
+                    <option value="">--Elige condición--</option>
+                    <option value="como nuevo">Como nuevo</option>
+                    <option value="bueno">Bueno</option>
+                    <option value="usado">Usado</option>
                 </select>
                 <br><br>
 
-                <button onclick="window.location.href='/views/users/subirItem.php'"> Añadir Item </button>
+                <?php if ($currentUser): ?>
+                    <button onclick="window.location.href='/views/users/subirItem.php'">+ Añadir Artículo</button>
+                <?php else: ?>
+                    <button onclick="window.location.href='/views/users/login.php'">Login para añadir artículos</button>
+                <?php endif; ?>
                 <br><br><br>
 
         <div id="items-container"></div>
@@ -44,7 +49,6 @@
 
     <?php require_once '../partial/footer.php'; ?>
 
-    <script src="/static/js/explorar.js" defer ></script>
+    <script src="/static/js/explorar.js"></script>
 </body>
 </html>
-

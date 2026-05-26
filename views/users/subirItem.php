@@ -1,56 +1,54 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/authentication.php';
+$user = requireLogin(); 
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <?php require_once '../partial/head.php'; ?>
 <body>
     <?php require_once '../partial/header.php'; ?>
 
     <main class="main-center-content">
-        <h1>Subir Items</h1>
+        <h1>Subir Artículo</h1>
+        <p>Publicando como: <strong><?= htmlspecialchars($user['name']) ?></strong> (<?= htmlspecialchars($user['email'] ?? '') ?>)</p>
         <section>
 
-            Titulo: <input type="text" name="title" id="title" required minlength="2" maxlength="50"required> <br>
+            Título: <input type="text" name="title" id="title" required minlength="2" maxlength="50"> <br>
             <span id="errorTitle" style="color:red"></span><br>
 
-            Imatge: <input type="text" name="image" id="image" placeholder="" required> <br>
+            Imagen (URL): <input type="text" name="image" id="image" placeholder="https://..."> <br>
             <span id="errorImage" style="color:red"></span><br>
 
-            Categoria: 
+            Categoría: 
             <select id="category" required>
-                <option value="">-- Elige categoria --</option>
+                <option value="">-- Elige categoría --</option>
                 <option value="ropa">Ropa</option>
                 <option value="libros">Libros</option>
                 <option value="herramientas">Herramientas</option>
                 <option value="hogar">Hogar</option>
-            </select > <br>
+            </select><br>
             <span id="errorCategory" style="color:red"></span><br>
 
-            Descripcion: <textarea name="description" id="description" required minlength="20" maxlength="300"></textarea> <br>
+            Descripción: <textarea name="description" id="description" required minlength="20" maxlength="300"></textarea><br>
             <span id="errorDescription" style="color:red"></span><br>
 
-            Condicion: 
+            Condición: 
             <select id="condition" required>
-                <option value="">-- Elige condicion --</option>
+                <option value="">-- Elige condición --</option>
                 <option value="como nuevo">Como nuevo</option>
                 <option value="bueno">Bueno</option>
                 <option value="usado">Usado</option>
-            </select > <br>
+            </select><br>
             <span id="errorCondition" style="color:red"></span><br>
 
-            Dispnibilibad: 
-            <select id="available" required>
+            Disponibilidad: 
+            <select id="available">
                 <option value="true">Disponible</option>
                 <option value="false">No disponible</option>
-            </select > <br>
-            <span id="errorAvailabe" style="color:red"></span><br>
+            </select><br>
 
-            Barrio: <input type="text" name="address" id="address" required> <br>
+            Barrio: <input type="text" name="address" id="address" required><br>
             <span id="errorAddress" style="color:red"></span><br>
-
-            Nombre Propietario: <input type="text" name="name" id="name" required> <br>
-            <span id="errorName" style="color:red"></span><br>
-
-            Correo: <input type="email" name="email" id="email" required> <br>
-            <span id="errorEmail" style="color:red"></span><br>
 
             <button id="post-item">Subir</button>
 
@@ -62,4 +60,3 @@
     <script src="/static/js/subirItem.js"></script>
 </body>
 </html>
-
