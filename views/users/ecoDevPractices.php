@@ -28,6 +28,19 @@
                     <p>Usamos temas oscuros en VS Code y en el navegador durante el desarrollo, reduciendo el consumo energético de las pantallas OLED durante largas horas de trabajo.</p>
                 </div>
             </div>
+
+            <h2>Prácticas en mi propio ordenador</h2>
+            <div>
+                <div class="info-card">
+                    <h3>Navegador Ecosia</h3>
+                    <p>Utilizo el motor de búsqueda Ecosia para todas mis consultas de desarrollo e investigación. Esta plataforma destina el 100% de sus beneficios económicos a la plantación de árboles en todo el mundo, mitigando directamente la huella de carbono de mis horas de código.</p>
+                </div>
+                <br>
+                <div class="info-card">
+                    <h3>IA Sostenible (EurAI)</h3>
+                    <p>Uso asistentes de inteligencia artificial basados en infraestructura ecológica, como la alternativa suiza EurAI. Sus centros de datos redirigen el calor residual de los servidores para la calefacción de hogares, convirtiendo la computación de mi proyecto en energía térmica útil.</p>
+                </div>
+            </div>
         </section>
 
         <section class="page-section">
