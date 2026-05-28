@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        
+
         <section class="categories-section">
             <div class="section-inner">
                 <h2 class="section-title">Explora por categoría</h2>
@@ -110,7 +110,7 @@
 
                 <div class="ods-impact-layout">
 
-                    <!-- Left: visual / problem side -->
+
                     <div class="ods-problem">
                         <div class="ods-problem-card">
                             <h3>El problema del sobreconsumo</h3>
@@ -132,7 +132,7 @@
                         </div>
                     </div>
 
-                    <!-- Right: ODS cards -->
+                  
                     <div class="ods-cards-col">
                         <div class="ods-goal-card">
                             <img src="/assets/images/ods12.jpg" alt="ODS 12 Producción y consumo responsables">
@@ -174,19 +174,3 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html lang="es">
-<?php require_once 'views/partial/head.php'; ?>
-<body>
-
-    <?php require_once 'views/partial/header.php'; ?>
-
-    <!-- ═══════════════════════════════════════════════
-         1. HERO
-    ════════════════════════════════════════════════ -->
-    
-
-    <?php require_once 'views/partial/footer.php'; ?>
-
-</body>
-</html>

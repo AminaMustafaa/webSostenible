@@ -75,32 +75,6 @@ function creatCard(item){
     });
     return itemDiv;
 }
-/*
-
-// 4. filter function
-function filterItems(){
-    const searchBar = document.getElementById("site-search").value.toLowerCase();
-    const categoryInput = document.getElementById("category").value;
-    const conditionInput = document.getElementById("condition").value;
-
-    const filtered = allItems.filter((item) => {
-        const matchSearch = item.title.toLowerCase().includes(searchBar);
-        const matchCategory = categoryInput === "" || item.category === categoryInput;
-        const matchCondition = conditionInput === "" || item.condition === conditionInput;
-
-        return matchSearch && matchCategory && matchCondition;
-    });
-
-    renderItems(filtered); 
-}
-
-document.getElementById("site-search").addEventListener("input", filterItems);
-document.getElementById("category").addEventListener("change", filterItems);
-document.getElementById("condition").addEventListener("change", filterItems);
-
-getItems();
-
-*/
 
 function filterItems() {
     const search    = document.getElementById("site-search").value.toLowerCase();
@@ -119,9 +93,9 @@ document.getElementById("site-search").addEventListener("input",  filterItems);
 document.getElementById("category").addEventListener("change",    filterItems);
 document.getElementById("condition").addEventListener("change",   filterItems);
 
-// ── Pre-select category from URL ?category=ropa ──────────
+// Pre-select category from URL ?category=ropa
 async function init() {
-    await getItems();                               // load data first
+    await getItems();                               
     const params = new URLSearchParams(window.location.search);
     const precat = params.get("category");
     if (precat) {

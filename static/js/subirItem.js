@@ -45,7 +45,7 @@ document.getElementById("condition").addEventListener("blur", function(event) {
 // ----------------------------------------------------
 
 document.getElementById("post-item").addEventListener("click", async () => {
-    // 1 — read all input values
+    // 1 read all input values
     const titulo = document.getElementById("title").value;
     const image = document.getElementById("image").value;
     const category = document.getElementById("category").value;
@@ -55,14 +55,14 @@ document.getElementById("post-item").addEventListener("click", async () => {
     const barrio = document.getElementById("address").value;
   
 
-    // 2 — validate before sending (stop if anything is empty)
+    // 2 validate before sending (stop if anything is empty)
     if(titulo === "" || category === "" || condition === "" || 
        description === "" || barrio === "" ) {
         alert("Por favor rellena todos los campos.");
         return; 
     }
 
-    // 3 — build newItem object
+    // 3 build newItem object
     const newItem = {
         title:         titulo,
         image_url:     image,
@@ -76,7 +76,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
         // owner_name and owner_email are filled from the server-side (from the JWT)
     };
 
-    // 4 — fetch POST 
+    // 4  fetch POST 
     try {
         const response = await fetch( /* `${API_URL}/items`, */ `/controllers/itemController.php/items`, {
             method: "POST",
@@ -92,6 +92,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
         } else {
             alert(data.error || "Error al subir el artículo");
         }
+        
     } catch(error) {
         console.log(error);
         alert("Error de conexión");

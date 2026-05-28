@@ -66,14 +66,14 @@
 
             try {
                 const res = await fetch("/proc/registrar.proc.php", {
-                    method:  "POST",
+                    method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body:    JSON.stringify({ name, email, password: pass })
+                    body: JSON.stringify({ name, email, password: pass })
                 });
                 const data = await res.json();
 
                 if (data.success) {
-                    alertBox.textContent = "¡Cuenta creada! Redirigiendo al login...";
+                    alertBox.textContent = "Cuenta creada! Redirigiendo al login...";
                     alertBox.className = "form-alert success";
                     alertBox.style.display = "block";
                     setTimeout(() => window.location.href = "/views/users/login.php", 1500);

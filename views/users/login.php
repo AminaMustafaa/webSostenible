@@ -37,16 +37,16 @@
         document.getElementById("form-login").addEventListener("submit", function(e) {
             e.preventDefault();
 
-            const nom         = document.getElementById("name").value.trim();
+            const nom = document.getElementById("name").value.trim();
             const contrasenya = document.getElementById("pass").value;
-            const alert       = document.getElementById("alert-msg");
+            const alert = document.getElementById("alert-msg");
 
             alert.style.display = "none";
 
             fetch("/proc/login.proc.php", {
-                method:  "POST",
+                method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body:    JSON.stringify({ nom, contrasenya })
+                body: JSON.stringify({ nom, contrasenya })
             })
             .then(r => r.json())
             .then(data => {
@@ -54,13 +54,13 @@
                     //window.location.href = "/views/users/gestionarItems.php";
                     window.location.href = "/views/users/misArticulos.php";
                 } else {
-                    alert.textContent    = data.error || "Error al iniciar sesión";
-                    alert.style.display  = "block";
+                    alert.textContent =data.error || "Error al iniciar sesión";
+                    alert.style.display = "block";
                 }
             })
             .catch(err => {
-                alert.textContent   = "Error de conexión";
-                alert.style.display = "block";
+                alert.textContent = "Error de conexión";
+                alert.style.display= "block";
                 console.error(err);
             });
         });

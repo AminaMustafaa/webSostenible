@@ -91,5 +91,4 @@ function renderDetail(item) {
 }
 
 
-
 getItem(id);

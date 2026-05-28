@@ -38,8 +38,8 @@ $user = requireLogin();
         const currentUserRole  = "<?= addslashes($user['role']) ?>";
 
         async function getMisItems() {
-            const loading   = document.getElementById("loading-msg");
-            const emptyMsg  = document.getElementById("empty-msg");
+            const loading = document.getElementById("loading-msg");
+            const emptyMsg = document.getElementById("empty-msg");
             const container = document.getElementById("mis-items-container");
 
             try {
@@ -119,6 +119,7 @@ $user = requireLogin();
                             } else {
                                 alert(data.error || "Error al eliminar");
                             }
+                            
                         } catch (err) {
                             alert("Error de conexión");
                             console.error(err);

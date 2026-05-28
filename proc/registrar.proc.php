@@ -6,9 +6,9 @@ require_once __DIR__ . "/../includes/dbOpenConn.php";
 
 header("Content-Type: application/json");
 
-$input    = json_decode(file_get_contents("php://input"), true);
-$name     = trim($input["name"] ?? "");
-$email    = trim($input["email"] ?? "");
+$input = json_decode(file_get_contents("php://input"), true);
+$name = trim($input["name"] ?? "");
+$email = trim($input["email"] ?? "");
 $password = $input["password"] ?? "";
 
 if (!$name || !$email || !$password) {
@@ -29,7 +29,7 @@ if (strlen($password) < 6) {
     exit;
 }
 
-// Check if email or name already exists
+// to check if email or name already exists
 $stmt = $db->prepare("SELECT id FROM users WHERE email = :email OR name = :name");
 $stmt->bindValue(":email", $email, SQLITE3_TEXT);
 $stmt->bindValue(":name", $name, SQLITE3_TEXT);
