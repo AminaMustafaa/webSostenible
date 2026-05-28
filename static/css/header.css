@@ -132,6 +132,17 @@ body {
     display: block;
 }
 
+.logo-dark {
+    display: none; 
+}   /* hidden in light mode */
+
+body.dark-mode-active .logo-light { 
+    display: none; 
+}  /* hide white-bg version */
+body.dark-mode-active .logo-dark  { 
+    display: block; 
+} /* show transparent version */
+
 /*NAV BAR*/
 
 .nav-bar {

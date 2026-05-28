@@ -25,8 +25,11 @@ $currentUser = validarToken(); //(false) if the user is not logged in
 
         <div class="header-bottom">
             <div class="logo">
-                <a href="/index.php"><img src="/assets/images/logoWhiteB.png" alt="logo"> </a>
-            </div>
+            <img src="/assets/images/logoWhiteB.png"    class="logo-light" alt="logo">
+            <img src="/assets/images/logoWhiteTrans.png" class="logo-dark"  alt="logo">
+        </div>
+
+            <h1>GreenLoop</h1>
             <nav class="nav-bar">
                 <ul class="nav-list">
                     <li class="dropdown">

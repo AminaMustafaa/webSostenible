@@ -31,8 +31,10 @@ async function getItems(){
             console.log("There are no items.");
         }
 
-    } catch(error){
-        console.log("Error in getting the data from Json file", error);
+    } catch (error) {
+        console.error("Error fetching items:", error);
+        document.getElementById("items-container").innerHTML =
+            "<p>Error al cargar los artículos. Asegúrate de que el servidor está en marcha.</p>";
     }
     
 };
@@ -43,7 +45,7 @@ function renderItems(items){
     mainItems.innerHTML = "";
 
     if (!items.length) {
-        mainItems.innerHTML = "<p>No se encontraron artículos.</p>";
+        mainItems.innerHTML = "<p class='no-results'>No se encontraron artículos.</p>";
         return;
     }
     items.forEach((item) => {
@@ -57,6 +59,7 @@ function creatCard(item){
     //creating main div
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("item-div");
+    const available = parseInt(item.available) === 1;
     itemDiv.innerHTML = `
         <img src="${item.image_url}" alt="${item.title}">
         <h3> Titulo: ${item.title} </h3>
@@ -72,6 +75,7 @@ function creatCard(item){
     });
     return itemDiv;
 }
+/*
 
 // 4. filter function
 function filterItems(){
@@ -81,7 +85,6 @@ function filterItems(){
 
     const filtered = allItems.filter((item) => {
         const matchSearch = item.title.toLowerCase().includes(searchBar);
-        // "" -> in case the section is empty
         const matchCategory = categoryInput === "" || item.category === categoryInput;
         const matchCondition = conditionInput === "" || item.condition === conditionInput;
 
@@ -96,3 +99,35 @@ document.getElementById("category").addEventListener("change", filterItems);
 document.getElementById("condition").addEventListener("change", filterItems);
 
 getItems();
+
+*/
+
+function filterItems() {
+    const search    = document.getElementById("site-search").value.toLowerCase();
+    const category  = document.getElementById("category").value;
+    const condition = document.getElementById("condition").value;
+
+    const filtered = allItems.filter(item =>
+        item.title.toLowerCase().includes(search) &&
+        (category  === "" || item.category  === category)  &&
+        (condition === "" || item.condition === condition)
+    );
+    renderItems(filtered);
+}
+
+document.getElementById("site-search").addEventListener("input",  filterItems);
+document.getElementById("category").addEventListener("change",    filterItems);
+document.getElementById("condition").addEventListener("change",   filterItems);
+
+// ── Pre-select category from URL ?category=ropa ──────────
+async function init() {
+    await getItems();                               // load data first
+    const params = new URLSearchParams(window.location.search);
+    const precat = params.get("category");
+    if (precat) {
+        document.getElementById("category").value = precat;
+        filterItems();
+    }
+}
+
+init();
