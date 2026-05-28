@@ -16,6 +16,7 @@ document.getElementById("description").addEventListener("blur", function(event) 
         document.getElementById("errorDescription").innerText = "";
     };
 });
+/*
 document.getElementById("email").addEventListener("blur", function(event) {
     if(!this.checkValidity()){
         event.preventDefault();
@@ -23,7 +24,7 @@ document.getElementById("email").addEventListener("blur", function(event) {
     } else {
         document.getElementById("errorEmail").innerText = "";
     };
-});
+});*/
 document.getElementById("category").addEventListener("blur", function(event) {
     if(!this.checkValidity()){
         event.preventDefault();
@@ -62,13 +63,13 @@ document.getElementById("post-item").addEventListener("click", async () => {
     }
 
     // 3 — build newItem object
-     const newItem = {
+    const newItem = {
         title:         titulo,
         image_url:     image,
         category:      category,
         description:   description,
         condition:     condition,
-        available:     disponible === "true",
+        available:     disponibilidad === "true",
         neighbourhood: barrio,
         times_lent:    0,
         date_posted:   new Date().toISOString().split("T")[0]
@@ -77,7 +78,7 @@ document.getElementById("post-item").addEventListener("click", async () => {
 
     // 4 — fetch POST 
     try {
-        const response = await fetch(`${API_URL}/items`, {
+        const response = await fetch( /* `${API_URL}/items`, */ `/controllers/itemController.php/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newItem)

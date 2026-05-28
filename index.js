@@ -135,40 +135,49 @@ app.post("/requests", (req,res) => {
 // GET all items
 app.get("/items", (req,res) => {
     const items = db.prepare("SELECT * FROM items").all();
-    res.json(item);
+    res.json(items);
 });
 
 // GET single item by id
 app.get("/items/:id", (req,res) => {
     const item = db.prepare("SELECT * FROM items WHERE id= ? ")
     .get(req.params.id);
-    res.json(items);
+    res.json(item);
 });
 
 // POST create new item
-app.post("/items", (req,res) => {
+app.post("/items", (req, res) => {
     const b = req.body;
     const stmt = db.prepare(`
-        INSERT INTO items(title,description,category,neighbourhood,owner_name,
-        owner_email,available,image_url,times_lent,date_posted)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+        INSERT INTO items (
+            title, description, category, condition, neighbourhood,
+            owner_name, owner_email, available, image_url, times_lent, date_posted
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    );
     const result = stmt.run(
-        b.title,b.description,b.category, b.condition, b.neighbourhood,
-        b.owner_name, b.owner_email,b.available ? 1:0, b.image_url,
+        b.title,
+        b.description,
+        b.category,
+        b.condition,        
+        b.neighbourhood,
+        b.owner_name,
+        b.owner_email,
+        b.available ? 1 : 0,
+        b.image_url,
         b.times_lent ?? 0,
         b.date_posted ?? new Date().toISOString().split("T")[0]
     );
-    res.json( {id: result.lastInsertRowid,
-        ...b
-    });
+    res.json({ id: result.lastInsertRowid, ...b });
 });
 
 // PUT update item
 app.put("/items/:id", (req, res) => {
     const b = req.body;
-    db.prepare(`UPDATE items SET title=?, description=?, category=?, condition=?,
+    db.prepare(`
+        UPDATE items SET title=?, description=?, category=?, condition=?,
         neighbourhood=?, owner_name=?, owner_email=?, available=?, image_url=?
-        WHERE id=?`).run(
+        WHERE id=?
+    `).run(
         b.title, b.description, b.category, b.condition, b.neighbourhood,
         b.owner_name, b.owner_email, b.available ? 1 : 0, b.image_url,
         req.params.id
@@ -179,7 +188,7 @@ app.put("/items/:id", (req, res) => {
 // DELETE item
 app.delete("/items/:id", (req, res) => {
     db.prepare("DELETE FROM items WHERE id = ?").run(req.params.id);
-    res.json({ message: "Item delete successfully." });
+    res.json({ message: "Item deleted successfully." });
 });
 
 

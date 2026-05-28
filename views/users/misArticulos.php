@@ -94,13 +94,25 @@ $user = requireLogin();
                 // Delete handlers
                 container.querySelectorAll(".btn-delete").forEach(btn => {
                     btn.addEventListener("click", async (e) => {
+                        // 1. Grab the ID immediately
                         const id = e.currentTarget.dataset.id;
+                        
+                        // 2. Find and save the card element immediately!
+                        const cardElement = e.currentTarget.closest(".my-item-card");
+
                         if (!confirm("¿Seguro que quieres eliminar este artículo?")) return;
+                        
                         try {
-                            const r = await fetch(`/controllers/itemController.php/items/${id}`, { method: "DELETE" });
+                            // Make sure you are using the fixed URL from the previous step:
+                            const r = await fetch(`/controllers/itemController.php/${id}`, { method: "DELETE" });
                             const data = await r.json();
+                            
                             if (r.ok) {
-                                e.currentTarget.closest(".my-item-card").remove();
+                                // 3. Use the saved reference here instead of e.currentTarget
+                                if (cardElement) {
+                                    cardElement.remove();
+                                }
+                                
                                 if (!container.querySelector(".my-item-card")) {
                                     emptyMsg.style.display = "block";
                                 }

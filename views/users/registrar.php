@@ -48,16 +48,16 @@
         document.getElementById("form-registrar").addEventListener("submit", async function(e) {
             e.preventDefault();
 
-            const name   = document.getElementById("reg-name").value.trim();
-            const email  = document.getElementById("reg-email").value.trim();
-            const pass   = document.getElementById("reg-pass").value;
-            const pass2  = document.getElementById("reg-pass2").value;
+            const name = document.getElementById("reg-name").value.trim();
+            const email = document.getElementById("reg-email").value.trim();
+            const pass = document.getElementById("reg-pass").value;
+            const pass2 = document.getElementById("reg-pass2").value;
             const errMsg = document.getElementById("error-msg");
             const okMsg  = document.getElementById("success-msg");
 
             alertBox.style.display = "none";
-            alertBox.className     = "form-alert";
-            errPass.textContent    = "";
+            alertBox.className = "form-alert";
+            errPass.textContent = "";
 
             if (pass !== pass2) {
                 errPass.textContent = "Las contraseñas no coinciden.";
@@ -65,7 +65,7 @@
             }
 
             try {
-                const res  = await fetch("/proc/registrar.proc.php", {
+                const res = await fetch("/proc/registrar.proc.php", {
                     method:  "POST",
                     headers: { "Content-Type": "application/json" },
                     body:    JSON.stringify({ name, email, password: pass })
@@ -73,18 +73,18 @@
                 const data = await res.json();
 
                 if (data.success) {
-                    alertBox.textContent   = "¡Cuenta creada! Redirigiendo al login...";
-                    alertBox.className     = "form-alert success";
+                    alertBox.textContent = "¡Cuenta creada! Redirigiendo al login...";
+                    alertBox.className = "form-alert success";
                     alertBox.style.display = "block";
                     setTimeout(() => window.location.href = "/views/users/login.php", 1500);
                 } else {
-                    alertBox.textContent   = data.error || "Error al registrar";
-                    alertBox.className     = "form-alert error";
+                    alertBox.textContent = data.error || "Error al registrar";
+                    alertBox.className = "form-alert error";
                     alertBox.style.display = "block";
                 }
             } catch (err) {
-                alertBox.textContent   = "Error de conexión";
-                alertBox.className     = "form-alert error";
+                alertBox.textContent = "Error de conexión";
+                alertBox.className = "form-alert error";
                 alertBox.style.display = "block";
                 console.error(err);
             }

@@ -6,29 +6,33 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 //const url = `http://localhost:3002/items/${id}`;
 //const url = `${API_URL}/items/${id}`;
-const url    = `/controllers/itemController.php/items/${id}`;
+const url    = `/controllers/itemController.php/${id}`;
 
 
 let oneItem = [];
 
 // 2. fetch just that one item
 async function getItem(id) {
-    try{
-
+    try {
         const response = await fetch(url);
-        if(!response.ok){
+        if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
 
-        const data = await response.json();
-        if(data){
+        let data = await response.json();
+        
+        if (data) {
+            if (Array.isArray(data)) {
+                data = data[0]; 
+            }
+            
             oneItem = data;
             renderDetail(oneItem);
         } else {
             console.log("Item not found");
         }
 
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }

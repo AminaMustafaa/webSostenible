@@ -18,7 +18,7 @@ $currentUser = validarToken(); //(false) if the user is not logged in
                     <li><a href="/index.php">INICIO</a></li>
                     <li><a href="/views/users/explorar.php">EXPLORAR</a></li>
                     <li><a href="/views/users/ods&impacto.php">ODS</a></li>
-                    <li><a href="">CONTACTO</a></li>
+                    <li><a href="/footer.php">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
@@ -48,7 +48,7 @@ $currentUser = validarToken(); //(false) if the user is not logged in
                         <ul class="dropdown-menu">
                             <li><a href="/views/users/ods&impacto.php">ODS y El Impacto</a></li>
                             <li><a href="/views/users/explorar.php">Explorar Artículos</a></li>
-                            <li><a href="/views/users/detalle.php">Detalles De Artículos</a></li>
+                            <!-- <li><a href="/views/users/detalle.php">Detalles De Artículos</a></li> -->
                             <li><a href="/views/users/subirItem.php">Subir Artículos</a></li>
                         </ul>
                     </li>

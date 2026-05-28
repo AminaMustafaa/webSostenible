@@ -6,7 +6,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 //const url = `http://localhost:3002/items/${id}`;
 //const url = `${API_URL}/items/${id}`;
-const url = `/controllers/itemController.php/items/${id}`;
+const url = `/controllers/itemController.php/${id}`;
 
 
 // 2. fetch the item to modify it later on
