@@ -9,9 +9,9 @@
     color: var(--text-on-dark);
     padding: 40px 64px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    gap: 40px;
+    gap: 80px;
 }
 
 /* LEFT COLUMN — logo + socials*/

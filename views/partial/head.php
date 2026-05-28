@@ -10,4 +10,11 @@
    <!-- <script src="/static/js/config.js" defer></script> -->
     <script src="/static/js/script.js" defer></script>
     <title>GreenLoop</title>
+
+    <script>
+        if (localStorage.getItem('darkMode') !== 'false')
+            document.body.classList.add('dark-mode-active');
+    </script>
+
+
 </head>
