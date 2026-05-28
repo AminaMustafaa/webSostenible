@@ -412,3 +412,211 @@ body {
 .button:hover {
     background-color: var(--hover-color);
 }
+
+/* ── FORM PAGES (subirItem, modificar, login, registrar) ── */
+
+.form-page-container {
+    max-width: 560px;
+    margin: 40px auto;
+    background: var(--box-color);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 36px 40px;
+}
+
+.form-page-container h1 {
+    color: var(--main-color);
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.form-page-container .form-subtitle {
+    font-size: 13.5px;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    opacity: 0.75;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    padding: 9px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--body-color);
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.form-error {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 3px;
+    min-height: 16px;
+}
+
+.form-alert {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    margin-bottom: 18px;
+    display: none;
+}
+
+.form-alert.error   { background: #fdecea; border-left: 3px solid #c0392b; color: #c0392b; }
+.form-alert.success { background: var(--accent-light); border-left: 3px solid var(--main-color); color: var(--main-color); }
+
+.form-actions {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-actions .btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.form-link {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-top: 6px;
+}
+
+.form-link a {
+    color: var(--main-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-link a:hover { text-decoration: underline; }
+
+/* ── MIS ARTÍCULOS item cards (owner view) ── */
+
+#mis-items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.my-item-card {
+    background: var(--box-color);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-item-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.my-item-card-body {
+    padding: 14px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-item-card-body h3 {
+    font-size: 15px;
+    color: var(--main-color);
+    margin-bottom: 6px;
+}
+
+.my-item-card-body p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    flex: 1;
+}
+
+.my-item-card-body .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.badge-available   { background: var(--accent-light); color: var(--main-color); }
+.badge-unavailable { background: #fdecea; color: #c0392b; }
+
+.my-item-card-actions {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px 14px;
+}
+
+.my-item-card-actions .btn-edit {
+    flex: 1;
+    text-align: center;
+    padding: 7px 10px;
+    background: var(--main-color);
+    color: var(--text-on-dark);
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.my-item-card-actions .btn-edit:hover { background: var(--hover-color); }
+
+.my-item-card-actions .btn-delete {
+    flex: 1;
+    text-align: center;
+    padding: 7px 10px;
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.my-item-card-actions .btn-delete:hover { background: #96281b; }

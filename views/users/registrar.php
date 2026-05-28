@@ -5,28 +5,40 @@
     <?php require_once '../partial/header.php'; ?>
 
     <main class="main-center-content">
-        <div class="container">
-            <h2>Crear cuenta</h2>
-            <p id="error-msg" style="color:red; display:none;"></p>
-            <p id="success-msg" style="color:green; display:none;"></p>
+        <div class="form-page-container">
+            <h1>Crear cuenta</h1>
+            <p class="form-subtitle">Únete a GreenLoop y empieza a compartir</p>
+
+            <div id="alert-msg" class="form-alert"></div>
 
             <form id="form-registrar">
-                <label for="reg-name">Nombre</label>
-                <input type="text" id="reg-name" required minlength="2">
+                <div class="form-group">
+                    <label for="reg-name">Nombre de usuario</label>
+                    <input type="text" id="reg-name" placeholder="Tu nombre" required minlength="2">
+                </div>
 
-                <label for="reg-email">Correo electrónico</label>
-                <input type="email" id="reg-email" required>
+                <div class="form-group">
+                    <label for="reg-email">Correo electrónico</label>
+                    <input type="email" id="reg-email" placeholder="tu@email.com" required>
+                </div>
 
-                <label for="reg-pass">Contraseña (mínimo 6 caracteres)</label>
-                <input type="password" id="reg-pass" required minlength="6">
+                <div class="form-group">
+                    <label for="reg-pass">Contraseña</label>
+                    <input type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" required minlength="6">
+                </div>
 
-                <label for="reg-pass2">Repite la contraseña</label>
-                <input type="password" id="reg-pass2" required minlength="6">
+                <div class="form-group">
+                    <label for="reg-pass2">Repite la contraseña</label>
+                    <input type="password" id="reg-pass2" placeholder="Repite la contraseña" required minlength="6">
+                    <span id="error-pass" class="form-error"></span>
+                </div>
 
-                <input class="btn" type="submit" value="Registrarse"><br><br>
-
-                <p>¿Ya tienes cuenta? <a href="/views/users/login.php">Inicia sesión</a></p>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Crear cuenta</button>
+                </div>
             </form>
+
+            <p class="form-link">Ya tienes cuenta? <a href="/views/users/login.php">Inicia sesion</a></p>
         </div>
     </main>
 
@@ -43,34 +55,37 @@
             const errMsg = document.getElementById("error-msg");
             const okMsg  = document.getElementById("success-msg");
 
-            errMsg.style.display = "none";
-            okMsg.style.display  = "none";
+            alertBox.style.display = "none";
+            alertBox.className     = "form-alert";
+            errPass.textContent    = "";
 
             if (pass !== pass2) {
-                errMsg.textContent = "Las contraseñas no coinciden.";
-                errMsg.style.display = "block";
+                errPass.textContent = "Las contraseñas no coinciden.";
                 return;
             }
 
             try {
-                const res = await fetch("/proc/registrar.proc.php", {
-                    method: "POST",
+                const res  = await fetch("/proc/registrar.proc.php", {
+                    method:  "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, password: pass })
+                    body:    JSON.stringify({ name, email, password: pass })
                 });
                 const data = await res.json();
 
                 if (data.success) {
-                    okMsg.textContent = "¡Cuenta creada! Redirigiendo al login...";
-                    okMsg.style.display = "block";
+                    alertBox.textContent   = "¡Cuenta creada! Redirigiendo al login...";
+                    alertBox.className     = "form-alert success";
+                    alertBox.style.display = "block";
                     setTimeout(() => window.location.href = "/views/users/login.php", 1500);
                 } else {
-                    errMsg.textContent = data.error || "Error al registrar";
-                    errMsg.style.display = "block";
+                    alertBox.textContent   = data.error || "Error al registrar";
+                    alertBox.className     = "form-alert error";
+                    alertBox.style.display = "block";
                 }
             } catch (err) {
-                errMsg.textContent = "Error de conexión";
-                errMsg.style.display = "block";
+                alertBox.textContent   = "Error de conexión";
+                alertBox.className     = "form-alert error";
+                alertBox.style.display = "block";
                 console.error(err);
             }
         });
