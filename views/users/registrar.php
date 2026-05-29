@@ -45,50 +45,50 @@
     <?php require_once '../partial/footer.php'; ?>
 
     <script>
-        document.getElementById("form-registrar").addEventListener("submit", async function(e) {
-            e.preventDefault();
+    document.getElementById("form-registrar").addEventListener("submit", async function(e) {
+        e.preventDefault();
 
-            const name = document.getElementById("reg-name").value.trim();
-            const email = document.getElementById("reg-email").value.trim();
-            const pass = document.getElementById("reg-pass").value;
-            const pass2 = document.getElementById("reg-pass2").value;
-            const errMsg = document.getElementById("error-msg");
-            const okMsg  = document.getElementById("success-msg");
+        const name     = document.getElementById("reg-name").value.trim();
+        const email    = document.getElementById("reg-email").value.trim();
+        const pass     = document.getElementById("reg-pass").value;
+        const pass2    = document.getElementById("reg-pass2").value;
+        const alertBox = document.getElementById("alert-msg");
+        const errPass  = document.getElementById("error-pass");
 
-            alertBox.style.display = "none";
-            alertBox.className = "form-alert";
-            errPass.textContent = "";
+        alertBox.style.display = "none";
+        alertBox.className     = "form-alert";
+        errPass.textContent    = "";
 
-            if (pass !== pass2) {
-                errPass.textContent = "Las contraseñas no coinciden.";
-                return;
-            }
+        if (pass !== pass2) {
+            errPass.textContent = "Las contraseñas no coinciden.";
+            return;
+        }
 
-            try {
-                const res = await fetch("/proc/registrar.proc.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, password: pass })
-                });
-                const data = await res.json();
+        try {
+            const res  = await fetch("/proc/registrar.proc.php", {
+                method:  "POST",
+                headers: { "Content-Type": "application/json" },
+                body:    JSON.stringify({ name, email, password: pass })
+            });
+            const data = await res.json();
 
-                if (data.success) {
-                    alertBox.textContent = "Cuenta creada! Redirigiendo al login...";
-                    alertBox.className = "form-alert success";
-                    alertBox.style.display = "block";
-                    setTimeout(() => window.location.href = "/views/users/login.php", 1500);
-                } else {
-                    alertBox.textContent = data.error || "Error al registrar";
-                    alertBox.className = "form-alert error";
-                    alertBox.style.display = "block";
-                }
-            } catch (err) {
-                alertBox.textContent = "Error de conexión";
-                alertBox.className = "form-alert error";
+            if (data.success) {
+                alertBox.textContent   = "¡Cuenta creada! Redirigiendo al login...";
+                alertBox.className     = "form-alert success";
                 alertBox.style.display = "block";
-                console.error(err);
+                setTimeout(() => window.location.href = "/views/users/login.php", 1500);
+            } else {
+                alertBox.textContent   = data.error || "Error al registrar";
+                alertBox.className     = "form-alert error";
+                alertBox.style.display = "block";
             }
-        });
-    </script>
+        } catch (err) {
+            alertBox.textContent   = "Error de conexión";
+            alertBox.className     = "form-alert error";
+            alertBox.style.display = "block";
+            console.error(err);
+        }
+    });
+</script>
 </body>
 </html>
