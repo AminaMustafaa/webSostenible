@@ -13,8 +13,7 @@
 
     <script>
         if (localStorage.getItem('darkMode') !== 'false')
-            document.body.classList.add('dark-mode-active');
+            document.documentElement.classList.add('dark-mode-active');
     </script>
-
 
 </head>

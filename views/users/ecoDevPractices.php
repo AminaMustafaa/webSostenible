@@ -37,7 +37,7 @@
                 </div>
                 <br>
                 <div class="info-card">
-                    <h3>IA Sostenible (EurAI)</h3>
+                    <h3>IA Sostenible (Euria - the ethical AI assistant)</h3>
                     <p>Uso asistentes de inteligencia artificial basados en infraestructura ecológica, como la alternativa suiza EurAI. Sus centros de datos redirigen el calor residual de los servidores para la calefacción de hogares, convirtiendo la computación de mi proyecto en energía térmica útil.</p>
                 </div>
             </div>

@@ -1104,7 +1104,7 @@ body {
 
 /* DARK MODE — Modo Sostenible */
 
-body.dark-mode-active {
+html.dark-mode-active {
     --body-color:   #0f1f0f;
     --box-color:    #1a2e1a;
     --top-bar:      #0a130a;
@@ -1120,31 +1120,31 @@ body.dark-mode-active {
 }
 
 /* Header bottom bar in dark mode */
-body.dark-mode-active .header-bottom {
+html.dark-mode-active .header-bottom {
     background-color: var(--box-color);
     border-bottom-color: var(--border-light);
 }
 
-body.dark-mode-active .dropdown-menu {
+html.dark-mode-active .dropdown-menu {
     background-color: var(--box-color);
     border-color: var(--border-light);
 }
 
 /* Hero in dark mode */
-body.dark-mode-active .hero {
+html.dark-mode-active .hero {
     background: linear-gradient(135deg, #0d2b0d 0%, #102010 60%, #1a3a1a 100%);
 }
 
-body.dark-mode-active .hero-stat {
+html.dark-mode-active .hero-stat {
     background: rgba(255,255,255,0.06);
     border-color: rgba(255,255,255,0.1);
 }
 
-body.dark-mode-active .ods-bar-track {
+html.dark-mode-active .ods-bar-track {
     background: #2a2a2a;
 }
 
-body.dark-mode-active .form-alert.error {
+html.dark-mode-active .form-alert.error {
     background: #3a1a1a;
     border-color: #c0392b;
     color: #e57373;

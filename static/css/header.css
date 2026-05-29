@@ -136,10 +136,10 @@ body {
     display: none; 
 }   /* hidden in light mode */
 
-body.dark-mode-active .logo-light { 
+html.dark-mode-active .logo-light { 
     display: none; 
 }  /* hide white-bg version */
-body.dark-mode-active .logo-dark  { 
+html.dark-mode-active .logo-dark { 
     display: block; 
 } /* show transparent version */
 

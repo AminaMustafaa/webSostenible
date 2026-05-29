@@ -22,7 +22,7 @@
                 <div class="hero-visual">
                     <div class="hero-stats">
                         <div class="hero-stat">
-                            <span class="stat-number">12+</span>
+                            <span class="stat-number">20+</span>
                             <span class="stat-label">Artículos disponibles</span>
                         </div>
                         <div class="hero-stat">
